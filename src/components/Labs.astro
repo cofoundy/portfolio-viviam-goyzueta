@@ -1,0 +1,42 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="labs" class="py-20 sm:py-28 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal">
+      <p class="text-[var(--umbral)] text-sm font-mono tracking-wider mb-2" style="color: var(--umbral);">// LABORATORIOS</p>
+      <h2 class="text-3xl sm:text-4xl font-bold">R&D Labs</h2>
+      <p class="text-[var(--text-secondary)] text-sm mt-2 max-w-lg">
+        Proyectos de investigación donde convergen diseño, ciencia y tecnología.
+      </p>
+    </div>
+
+    <div class="section-gradient-line mt-6 mb-12"></div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {siteConfig.labs.map((lab, i) => (
+        <div class={`reveal stagger-${i + 1}`}>
+          <div class="gradient-border card-hover">
+            <div class="gradient-border-inner">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-2 h-2 rounded-full bg-[var(--aqva)] animate-pulse"></div>
+                <span class="text-xs font-mono text-[var(--aqva)] tracking-wider uppercase">Active Research</span>
+              </div>
+              <h3 class="text-xl font-bold">{lab.name}</h3>
+              <p class="text-[var(--magentra)] text-sm mt-1 font-medium">{lab.tagline}</p>
+              <p class="text-[var(--text-secondary)] text-sm mt-4 leading-relaxed">
+                {lab.description}
+              </p>
+              <div class="flex flex-wrap gap-2 mt-5">
+                {lab.tags.map((tag: string) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,54 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="journey" class="py-20 sm:py-28 px-6">
+  <div class="max-w-4xl mx-auto">
+    <div class="reveal">
+      <p class="text-[var(--magentra)] text-sm font-mono tracking-wider mb-2">// TRAYECTORIA</p>
+      <h2 class="text-3xl sm:text-4xl font-bold">Journey</h2>
+    </div>
+
+    <div class="section-gradient-line mt-6 mb-12"></div>
+
+    <!-- Vertical timeline -->
+    <div class="relative">
+      <!-- Gradient line -->
+      <div class="absolute left-4 sm:left-6 top-0 bottom-0 w-0.5 timeline-line-gradient rounded-full"></div>
+
+      <div class="space-y-8">
+        {siteConfig.journey.map((item, i) => (
+          <div class={`reveal stagger-${Math.min(i % 5 + 1, 5)} relative pl-12 sm:pl-16`}>
+            <!-- Dot -->
+            <div
+              class="absolute left-[11px] sm:left-[19px] top-1.5 w-3 h-3 rounded-full border-2"
+              style={`border-color: ${item.type === 'work' ? 'var(--magentra)' : 'var(--aqva)'}; background: ${item.type === 'work' ? 'var(--magentra)' : 'var(--aqva)'};`}
+            ></div>
+
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+              <span class="text-sm font-mono font-bold shrink-0" style={`color: ${item.type === 'work' ? 'var(--magentra)' : 'var(--aqva)'}`}>
+                {item.year}
+              </span>
+              <div>
+                <h3 class="text-base sm:text-lg font-semibold">{item.title}</h3>
+                <p class="text-[var(--text-secondary)] text-sm">{item.place}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="reveal mt-10 flex items-center justify-center gap-6 text-xs text-[var(--text-secondary)]">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-[var(--magentra)]"></span>
+        Experiencia
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-[var(--aqva)]"></span>
+        Formación
+      </div>
+    </div>
+  </div>
+</section>

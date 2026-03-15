@@ -1,0 +1,33 @@
+---
+import { siteConfig } from "../config";
+const categories = Object.entries(siteConfig.toolkit);
+const categoryColors = ["var(--magentra)", "var(--aqva)", "var(--solara)", "var(--umbral)", "var(--infigo)"];
+---
+
+<section class="py-20 sm:py-28 px-6 bg-[var(--bg-light)]">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal">
+      <p class="text-[var(--aqva)] text-sm font-mono tracking-wider mb-2">// HERRAMIENTAS</p>
+      <h2 class="text-3xl sm:text-4xl font-bold">Toolkit</h2>
+    </div>
+
+    <div class="section-gradient-line mt-6 mb-12"></div>
+
+    <div class="space-y-8">
+      {categories.map(([category, skills], i) => (
+        <div class={`reveal stagger-${Math.min(i + 1, 5)}`}>
+          <h3 class="text-sm font-mono font-bold tracking-wider mb-3" style={`color: ${categoryColors[i]}`}>
+            {category}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {(skills as string[]).map((skill) => (
+              <span class="px-3 py-1.5 text-sm bg-[var(--bg)] border border-[var(--infigo)]/20 rounded-lg text-[var(--coco-silver)] hover:border-[var(--magentra)]/40 hover:text-[var(--text-primary)] transition-colors cursor-default">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,92 @@
+---
+import { siteConfig } from "../config";
+---
+
+<!-- Mobile hamburger -->
+<button
+  id="menu-toggle"
+  class="fixed top-6 right-6 z-[60] md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+  aria-label="Toggle menu"
+>
+  <span class="menu-bar w-6 h-0.5 bg-[var(--text-primary)] transition-all duration-300 origin-center"></span>
+  <span class="menu-bar w-6 h-0.5 bg-[var(--text-primary)] transition-all duration-300"></span>
+  <span class="menu-bar w-6 h-0.5 bg-[var(--text-primary)] transition-all duration-300 origin-center"></span>
+</button>
+
+<!-- Mobile overlay -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-50 bg-[var(--bg)]/95 backdrop-blur-xl flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+>
+  <nav class="flex flex-col items-center gap-8">
+    {["work", "about", "services", "labs", "journey", "contact"].map((item) => (
+      <a
+        href={`#${item}`}
+        class="mobile-link text-2xl font-medium text-[var(--text-primary)] hover:text-[var(--magentra)] transition-colors"
+      >
+        {item.charAt(0).toUpperCase() + item.slice(1)}
+      </a>
+    ))}
+  </nav>
+</div>
+
+<!-- Desktop floating pill nav -->
+<header
+  id="nav-pill"
+  class="nav-pill hidden md:block fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-[var(--bg-light)]/80 backdrop-blur-xl border border-[var(--infigo)]/30 rounded-full px-8 py-3"
+>
+  <nav class="flex items-center gap-8">
+    <a href="#hero" class="text-sm font-bold text-[var(--magentra)] tracking-wider">.V</a>
+    {["work", "about", "services", "labs", "journey", "contact"].map((item) => (
+      <a
+        href={`#${item}`}
+        class="text-sm text-[var(--coco-silver)] hover:text-[var(--text-primary)] transition-colors duration-200"
+      >
+        {item.charAt(0).toUpperCase() + item.slice(1)}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const bars = toggle?.querySelectorAll('.menu-bar');
+  let isOpen = false;
+
+  toggle?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    if (isOpen) {
+      menu?.classList.remove('opacity-0', 'pointer-events-none');
+      menu?.classList.add('opacity-100');
+      if (bars) {
+        bars[0].classList.add('rotate-45', 'translate-y-[4px]');
+        bars[1].classList.add('opacity-0');
+        bars[2].classList.add('-rotate-45', '-translate-y-[4px]');
+      }
+    } else {
+      menu?.classList.add('opacity-0', 'pointer-events-none');
+      menu?.classList.remove('opacity-100');
+      if (bars) {
+        bars[0].classList.remove('rotate-45', 'translate-y-[4px]');
+        bars[1].classList.remove('opacity-0');
+        bars[2].classList.remove('-rotate-45', '-translate-y-[4px]');
+      }
+    }
+  });
+
+  // Close on link click
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      isOpen = false;
+      menu?.classList.add('opacity-0', 'pointer-events-none');
+      menu?.classList.remove('opacity-100');
+      if (bars) {
+        bars[0].classList.remove('rotate-45', 'translate-y-[4px]');
+        bars[1].classList.remove('opacity-0');
+        bars[2].classList.remove('-rotate-45', '-translate-y-[4px]');
+      }
+    });
+  });
+</script>

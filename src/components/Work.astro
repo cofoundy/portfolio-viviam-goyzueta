@@ -1,0 +1,81 @@
+---
+import { siteConfig } from "../config";
+const featured = siteConfig.projects.filter(p => p.featured);
+const others = siteConfig.projects.filter(p => !p.featured);
+---
+
+<section id="work" class="py-20 sm:py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal">
+      <p class="text-[var(--magentra)] text-sm font-mono tracking-wider mb-2">// PROYECTOS</p>
+      <h2 class="text-3xl sm:text-4xl font-bold">Work</h2>
+    </div>
+
+    <div class="section-gradient-line mt-6 mb-12"></div>
+
+    <!-- Featured project (MInvitacion) -->
+    {featured.map((project) => (
+      <div class="reveal stagger-1 mb-10">
+        <div class="gradient-border card-hover project-card">
+          <div class="gradient-border-inner p-6 sm:p-10">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+              <div class="flex-1">
+                <span class="tag mb-3">Featured</span>
+                <h3 class="text-2xl sm:text-3xl font-bold mt-3">{project.name}</h3>
+                <p class="text-[var(--magentra)] text-sm mt-1">{project.role}</p>
+                <p class="text-[var(--text-secondary)] mt-4 leading-relaxed max-w-xl">
+                  {project.description}
+                </p>
+                <div class="flex flex-wrap gap-2 mt-5">
+                  {project.tags.map((tag: string) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-4 sm:mt-0 inline-flex items-center gap-2 text-[var(--aqva)] text-sm hover:underline shrink-0"
+                >
+                  Ver proyecto →
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+
+    <!-- Other projects grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {others.map((project, i) => (
+        <div class={`reveal stagger-${Math.min(i + 2, 5)}`}>
+          <div class="h-full bg-[var(--bg-light)] border border-[var(--infigo)]/20 rounded-xl p-5 card-hover project-card">
+            <h3 class="text-lg font-bold">{project.name}</h3>
+            <p class="text-[var(--magentra)] text-xs mt-1">{project.role}</p>
+            <p class="text-[var(--text-secondary)] text-sm mt-3 leading-relaxed">
+              {project.description}
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-4">
+              {project.tags.map((tag: string) => (
+                <span class="tag text-[0.6rem]">{tag}</span>
+              ))}
+            </div>
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex text-[var(--aqva)] text-xs hover:underline"
+              >
+                Ver más →
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

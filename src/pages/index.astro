@@ -1,0 +1,66 @@
+---
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Work from "../components/Work.astro";
+import Prisma from "../components/Prisma.astro";
+import Services from "../components/Services.astro";
+import Labs from "../components/Labs.astro";
+import Toolkit from "../components/Toolkit.astro";
+import Journey from "../components/Journey.astro";
+import Contact from "../components/Contact.astro";
+import { siteConfig } from "../config";
+import "../styles/global.css";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={siteConfig.description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{siteConfig.name} {siteConfig.lastName} — {siteConfig.title}</title>
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <Hero />
+      <Work />
+      <Prisma />
+      <Services />
+      <Labs />
+      <Toolkit />
+      <Journey />
+      <Contact />
+    </main>
+
+    <script>
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1
+      };
+
+      const revealOnScroll = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(revealOnScroll, observerOptions);
+
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-scale').forEach(el => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

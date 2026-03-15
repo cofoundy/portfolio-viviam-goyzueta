@@ -1,0 +1,55 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="about" class="py-20 sm:py-28 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal">
+      <p class="text-[var(--aqva)] text-sm font-mono tracking-wider mb-2">// EL PRISMA</p>
+      <h2 class="text-3xl sm:text-4xl font-bold">Sobre Mí</h2>
+    </div>
+
+    <div class="section-gradient-line mt-6 mb-12"></div>
+
+    <!-- The Prism: 3 converging lenses -->
+    <div class="reveal stagger-1">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 relative">
+        {siteConfig.prisma.map((lens, i) => (
+          <div class="relative">
+            <div class="bg-[var(--bg-light)] border border-[var(--infigo)]/20 rounded-xl p-6 text-center card-hover h-full">
+              <span class="text-3xl">{lens.icon}</span>
+              <h3 class="text-xl font-bold mt-3 bg-gradient-to-r from-[var(--magentra)] to-[var(--aqva)] bg-clip-text text-transparent">
+                {lens.label}
+              </h3>
+              <p class="text-[var(--coco-silver)] text-sm mt-1 font-mono">{lens.field}</p>
+              <p class="text-[var(--text-secondary)] text-xs mt-1">{lens.period}</p>
+              <p class="text-[var(--text-secondary)] text-sm mt-4 leading-relaxed">{lens.insight}</p>
+            </div>
+          </div>
+        ))}
+
+        <!-- Desktop connector line -->
+        <div class="hidden sm:block absolute top-1/2 left-[16.67%] right-[16.67%] -translate-y-1/2 z-[-1]">
+          <div class="prisma-line h-0.5 rounded-full"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Convergence text -->
+    <div class="reveal stagger-2 mt-10 text-center">
+      <p class="text-lg sm:text-xl font-medium text-[var(--coco-silver)]">
+        Estructura + Análisis + Visión = <span class="font-bold text-[var(--magentra)]">VICO</span>
+      </p>
+    </div>
+
+    <!-- Summary -->
+    <div class="reveal stagger-3 mt-10 max-w-3xl mx-auto">
+      <p class="text-[var(--text-secondary)] leading-relaxed text-center">
+        {siteConfig.profile.summary}
+      </p>
+      <p class="text-center mt-4 text-sm text-[var(--coco-silver)]">
+        📍 {siteConfig.profile.location}
+      </p>
+    </div>
+  </div>
+</section>

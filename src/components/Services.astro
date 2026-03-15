@@ -1,0 +1,34 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="services" class="py-20 sm:py-28 px-6 bg-[var(--bg-light)]">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal">
+      <p class="text-[var(--solara)] text-sm font-mono tracking-wider mb-2">// SERVICIOS</p>
+      <h2 class="text-3xl sm:text-4xl font-bold">Lo Que Hago</h2>
+    </div>
+
+    <div class="section-gradient-line mt-6 mb-12"></div>
+
+    <div class="space-y-4">
+      {siteConfig.services.map((service, i) => (
+        <div class={`reveal stagger-${Math.min(i + 1, 5)}`}>
+          <div class="flex items-start gap-4 p-5 rounded-xl border border-[var(--infigo)]/10 hover:border-[var(--magentra)]/30 transition-colors group">
+            <span class="text-[var(--magentra)] text-lg font-mono font-bold shrink-0 mt-0.5">
+              0{i + 1}
+            </span>
+            <div>
+              <h3 class="text-lg font-bold group-hover:text-[var(--magentra)] transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-[var(--text-secondary)] text-sm mt-1 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

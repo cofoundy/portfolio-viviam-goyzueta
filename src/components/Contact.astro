@@ -1,0 +1,56 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="contact" class="py-20 sm:py-28 px-6 bg-[var(--bg-light)]">
+  <div class="max-w-3xl mx-auto text-center">
+    <div class="reveal">
+      <p class="text-[var(--magentra)] text-sm font-mono tracking-wider mb-2">// CONTACTO</p>
+      <h2 class="text-3xl sm:text-4xl font-bold">{siteConfig.cta.title}</h2>
+      <p class="text-[var(--text-secondary)] mt-4 max-w-md mx-auto">
+        {siteConfig.cta.description}
+      </p>
+    </div>
+
+    <div class="reveal stagger-1 mt-8">
+      <a
+        href={`mailto:${siteConfig.social.email}`}
+        class="inline-block px-8 py-3 bg-[var(--magentra)] text-white font-medium rounded-full hover:opacity-90 transition-opacity"
+      >
+        {siteConfig.cta.buttonText}
+      </a>
+    </div>
+
+    <!-- Social links -->
+    <div class="reveal stagger-2 mt-10 flex items-center justify-center gap-6">
+      <a href={`mailto:${siteConfig.social.email}`} target="_blank" rel="noopener noreferrer"
+        class="text-[var(--coco-silver)] hover:text-[var(--aqva)] transition-colors" aria-label="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+      <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer"
+        class="text-[var(--coco-silver)] hover:text-[var(--aqva)] transition-colors" aria-label="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href={siteConfig.social.behance} target="_blank" rel="noopener noreferrer"
+        class="text-[var(--coco-silver)] hover:text-[var(--aqva)] transition-colors" aria-label="Behance">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z"/></svg>
+      </a>
+      <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer"
+        class="text-[var(--coco-silver)] hover:text-[var(--aqva)] transition-colors" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-8 px-6 border-t border-[var(--infigo)]/20">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-[var(--text-secondary)] text-xs">
+      &copy; {new Date().getFullYear()} {siteConfig.name} {siteConfig.lastName}
+    </p>
+    <p class="text-[var(--text-secondary)] text-xs">
+      Hecho con <span class="text-[var(--magentra)]">&hearts;</span> por <a href="https://cofoundy.dev" target="_blank" rel="noopener noreferrer" class="text-[var(--aqva)] hover:underline">Cofoundy</a>
+    </p>
+  </div>
+</footer>
