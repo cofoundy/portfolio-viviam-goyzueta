@@ -2,8 +2,10 @@
 import { siteConfig } from "../config";
 ---
 
-<section id="contact" class="py-20 sm:py-28 px-6 bg-[var(--bg-light)]">
-  <div class="max-w-3xl mx-auto text-center">
+<section id="contact" class="py-20 sm:py-28 px-6 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-t from-[var(--magentra)]/10 via-[var(--bg-light)] to-[var(--umbral)]/10 z-0"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--magentra)] to-transparent opacity-30"></div>
+  <div class="max-w-3xl mx-auto text-center relative z-10">
     <div class="reveal">
       <p class="text-[var(--magentra)] text-sm font-mono tracking-wider mb-2">// CONTACTO</p>
       <h2 class="text-3xl sm:text-4xl font-bold">{siteConfig.cta.title}</h2>

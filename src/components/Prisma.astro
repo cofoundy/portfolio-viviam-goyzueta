@@ -1,12 +1,16 @@
 ---
 import { siteConfig } from "../config";
+const lensColors = ["var(--magentra)", "var(--solara)", "var(--aqva)"];
 ---
 
-<section id="about" class="py-20 sm:py-28 px-6">
-  <div class="max-w-5xl mx-auto">
+<section id="about" class="py-20 sm:py-28 px-6 relative overflow-hidden">
+  <!-- Subtle gradient bg -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[var(--infigo)]/20 via-transparent to-[var(--umbral)]/10 z-0"></div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
     <div class="reveal">
       <p class="text-[var(--aqva)] text-sm font-mono tracking-wider mb-2">// EL PRISMA</p>
-      <h2 class="text-3xl sm:text-4xl font-bold">Sobre Mí</h2>
+      <h2 class="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[var(--text-primary)] to-[var(--coco-silver)] bg-clip-text text-transparent">Sobre Mí</h2>
     </div>
 
     <div class="section-gradient-line mt-6 mb-12"></div>
@@ -16,14 +20,16 @@ import { siteConfig } from "../config";
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 relative">
         {siteConfig.prisma.map((lens, i) => (
           <div class="relative">
-            <div class="bg-[var(--bg-light)] border border-[var(--infigo)]/20 rounded-xl p-6 text-center card-hover h-full">
-              <span class="text-3xl">{lens.icon}</span>
-              <h3 class="text-xl font-bold mt-3 bg-gradient-to-r from-[var(--magentra)] to-[var(--aqva)] bg-clip-text text-transparent">
-                {lens.label}
-              </h3>
-              <p class="text-[var(--coco-silver)] text-sm mt-1 font-mono">{lens.field}</p>
-              <p class="text-[var(--text-secondary)] text-xs mt-1">{lens.period}</p>
-              <p class="text-[var(--text-secondary)] text-sm mt-4 leading-relaxed">{lens.insight}</p>
+            <div class="gradient-border card-hover h-full">
+              <div class="gradient-border-inner text-center">
+                <span class="text-3xl">{lens.icon}</span>
+                <h3 class="text-xl font-bold mt-3" style={`color: ${lensColors[i]}`}>
+                  {lens.label}
+                </h3>
+                <p class="text-[var(--coco-silver)] text-sm mt-1 font-mono">{lens.field}</p>
+                <p class="text-[var(--text-secondary)] text-xs mt-1">{lens.period}</p>
+                <p class="text-[var(--text-secondary)] text-sm mt-4 leading-relaxed">{lens.insight}</p>
+              </div>
             </div>
           </div>
         ))}
@@ -37,17 +43,20 @@ import { siteConfig } from "../config";
 
     <!-- Convergence text -->
     <div class="reveal stagger-2 mt-10 text-center">
-      <p class="text-lg sm:text-xl font-medium text-[var(--coco-silver)]">
-        Estructura + Análisis + Visión = <span class="font-bold text-[var(--magentra)]">VICO</span>
+      <p class="text-lg sm:text-xl font-medium">
+        <span class="text-[var(--magentra)]">Estructura</span> +
+        <span class="text-[var(--solara)]">Análisis</span> +
+        <span class="text-[var(--aqva)]">Visión</span> =
+        <span class="font-bold bg-gradient-to-r from-[var(--magentra)] via-[var(--solara)] to-[var(--aqva)] bg-clip-text text-transparent text-2xl">VICO</span>
       </p>
     </div>
 
     <!-- Summary -->
     <div class="reveal stagger-3 mt-10 max-w-3xl mx-auto">
-      <p class="text-[var(--text-secondary)] leading-relaxed text-center">
+      <p class="text-[var(--coco-silver)] leading-relaxed text-center">
         {siteConfig.profile.summary}
       </p>
-      <p class="text-center mt-4 text-sm text-[var(--coco-silver)]">
+      <p class="text-center mt-4 text-sm text-[var(--aqva)]">
         📍 {siteConfig.profile.location}
       </p>
     </div>
