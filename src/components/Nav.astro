@@ -19,7 +19,7 @@ import { siteConfig } from "../config";
   class="fixed inset-0 z-50 bg-[var(--bg)]/95 backdrop-blur-xl flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
 >
   <nav class="flex flex-col items-center gap-8">
-    {["work", "about", "services", "labs", "journey", "contact"].map((item) => (
+    {["work", "labs", "about", "services", "journey", "contact"].map((item) => (
       <a
         href={`#${item}`}
         class="mobile-link text-2xl font-medium text-[var(--text-primary)] hover:text-[var(--magentra)] transition-colors"
@@ -37,7 +37,7 @@ import { siteConfig } from "../config";
 >
   <nav class="flex items-center gap-8">
     <a href="#hero" class="text-sm font-bold text-[var(--magentra)] tracking-wider">.V</a>
-    {["work", "about", "services", "labs", "journey", "contact"].map((item) => (
+    {["work", "labs", "about", "services", "journey", "contact"].map((item) => (
       <a
         href={`#${item}`}
         class="text-sm text-[var(--coco-silver)] hover:text-[var(--text-primary)] transition-colors duration-200"

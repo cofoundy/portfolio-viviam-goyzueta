@@ -60,51 +60,75 @@ export const siteConfig = {
   ],
 
   // Work / Projects
+  // category: "Web & Dev" | "UX/UI" | "Media"  → usada por los filter chips de Work
   projects: [
     {
-      name: "MInvitacion Online",
-      role: "Founder & UX Lead",
-      description: "Startup de wedding web experiences premium. Micrositios interactivos con countdown, mapas, RSVP, música y pagos Yape/Plin.",
-      tags: ["WordPress", "UX", "Startup", "Mobile-first"],
-      link: "https://minvitacion.online",
-      featured: true,
-    },
-    {
       name: "Alana — Catálogo de Novias",
+      slug: "alana-catalogo-novias",
+      year: "2024",
+      category: "UX/UI",
       role: "Diseñadora",
       description: "Catálogo digital para boutique de novias con navegación intuitiva y diseño editorial.",
       tags: ["UI/UX", "Branding", "Editorial"],
       link: "https://www.behance.net/vicodigital",
-      featured: false,
     },
     {
       name: "Misk'i — Restaurant Online",
+      slug: "miski-restaurant-online",
+      year: "2023",
+      category: "Web & Dev",
       role: "Diseñadora Web",
       description: "Plataforma web para restaurante con menú interactivo y sistema de pedidos.",
       tags: ["Web Design", "UI/UX", "WordPress"],
       link: "https://www.behance.net/vicodigital",
-      featured: false,
     },
     {
       name: "Hotel Plaza Tacna",
+      slug: "hotel-plaza-tacna",
+      year: "2023",
+      category: "Web & Dev",
       role: "Diseñadora Digital",
       description: "Diseño web y piezas gráficas para hotel en Tacna.",
       tags: ["Web Design", "Graphic Design"],
-      featured: false,
     },
     {
       name: "MU Marketing & Content Lab",
+      slug: "mu-marketing-content-lab",
+      year: "2022",
+      category: "Web & Dev",
       role: "Diseñadora Digital & Web",
       description: "Desarrollo web HTML/PHP y administración de sitios WordPress corporativos.",
       tags: ["WordPress", "HTML/PHP", "Marketing"],
-      featured: false,
     },
     {
       name: "Beltrax Digital Agency",
+      slug: "beltrax-digital-agency",
+      year: "2022",
+      category: "UX/UI",
       role: "Diseñadora Digital",
       description: "Diseño digital para agencia peruana de marketing.",
       tags: ["Graphic Design", "Digital"],
-      featured: false,
+    },
+    // --- Media: placeholders con Lorem para que reemplaces con tus piezas de video/imagen ---
+    {
+      name: "Reel — Lorem Ipsum",
+      slug: "media-reel-lorem",
+      year: "2026",
+      category: "Media",
+      role: "Edición & Postproducción",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pieza de video editada para redes.",
+      tags: ["Video", "Postproducción", "Reels"],
+      placeholder: true,
+    },
+    {
+      name: "Serie Fotográfica — Lorem",
+      slug: "media-serie-lorem",
+      year: "2026",
+      category: "Media",
+      role: "Retoque & Dirección",
+      description: "Lorem ipsum dolor sit amet. Serie de imágenes con retoque y dirección de arte.",
+      tags: ["Fotografía", "Retoque", "Dirección de Arte"],
+      placeholder: true,
     },
   ],
 
@@ -114,28 +138,59 @@ export const siteConfig = {
     { title: "Desarrollo Web", description: "Sitios WordPress, HTML/CSS responsive con gestión técnica completa." },
     { title: "Identidad Visual", description: "Branding y sistemas de diseño con personalidad." },
     { title: "Wedding Web Experiences", description: "Micrositios interactivos premium para bodas vía MInvitacion." },
+    { title: "Edición de Video y Media", description: "Postproducción audiovisual, retoque de imagen y creación de contenido de alta fidelidad." },
     { title: "Arquitectura de Información", description: "Organización sistémica de contenido con jerarquía visual." },
   ],
 
-  // R&D Labs
+  // R&D Labs — Startups & R&D
   labs: [
     {
+      name: "MInvitacion Online",
+      label: "FEATURED / STARTUP",
+      tagline: "Wedding Web Experiences",
+      role: "Founder & UX Lead",
+      description: "Startup de wedding web experiences premium. Micrositios interactivos con countdown, mapas, RSVP, música y pagos Yape/Plin.",
+      tags: ["WordPress", "UX", "Startup", "Mobile-first"],
+      link: "https://minvitacion.online",
+      // null = link pendiente de confirmar con la clienta (no inventar URLs)
+      social: {
+        instagram: null,
+        linkedin: "https://www.linkedin.com/in/vicodigital",
+        tiktok: null,
+      },
+    },
+    {
       name: "Epi.kinetik",
+      label: "ACTIVE RESEARCH",
       tagline: "Performance Design Research",
+      role: "Investigadora principal",
       description: "Optimización humana e integración Físico-Mente-Esencia. Investigación aplicada en neurofisiología y nutrición para productos digitales de evolución personal.",
       tags: ["Biohacking", "TDAH", "Neurofisiología"],
+      social: {
+        instagram: "https://www.instagram.com/epi.kinetik",
+        linkedin: "https://www.linkedin.com/in/vicodigital",
+        tiktok: null,
+      },
     },
     {
       name: "Irizentia",
+      label: "ACTIVE RESEARCH",
       tagline: "Arquitectura de Información",
+      role: "Investigadora principal",
       description: "Framework 'Panteón' enfocado en la organización sistémica de información compleja y jerarquía visual estratégica.",
       tags: ["IA Framework", "Sistemas", "Visual Hierarchy"],
+      social: {
+        instagram: "https://www.instagram.com/vico.digital_",
+        linkedin: "https://www.linkedin.com/in/vicodigital",
+        tiktok: null,
+      },
     },
   ],
 
   // Toolkit (skills by category)
   toolkit: {
     "Diseño/UX": ["UX Design", "UI Design", "Wireframing", "Prototipado", "Responsive Design", "Arquitectura de Información"],
+    "Media & Visual": ["Chip de prueba 1", "Chip de prueba 2", "Chip de prueba 3", "Chip de prueba 4"],
     "Desarrollo": ["WordPress", "HTML", "CSS/Tailwind", "JavaScript", "PHP", "Java/Spring"],
     "Tech/Ops": ["VPS Management", "CLI/Terminal", "cPanel", "Web Deployment", "Mantenimiento Técnico"],
     "Seguridad": ["ISO 27001", "Ciberseguridad", "Computación Cuántica", "Ingeniería Social"],

@@ -1,5 +1,11 @@
 ---
 import { siteConfig } from "../config";
+
+const filters = [
+  { key: "all", label: "Todo", color: "var(--text-primary)" },
+  { key: "work", label: "Experiencia", color: "var(--magentra)" },
+  { key: "education", label: "Formación", color: "var(--aqva)" },
+];
 ---
 
 <section id="journey" class="py-20 sm:py-28 px-6">
@@ -9,17 +15,37 @@ import { siteConfig } from "../config";
       <h2 class="text-3xl sm:text-4xl font-bold">Journey</h2>
     </div>
 
-    <div class="section-gradient-line mt-6 mb-12"></div>
+    <div class="section-gradient-line mt-6 mb-8"></div>
+
+    <!-- Filter chips (antes eran leyenda al pie) -->
+    <div class="reveal flex flex-wrap gap-2.5 mb-10" role="tablist" aria-label="Filtrar trayectoria">
+      {filters.map((f) => (
+        <button
+          type="button"
+          role="tab"
+          class="journey-chip inline-flex items-center gap-2 px-4 py-2 text-sm rounded-full border transition-all duration-200"
+          data-filter={f.key}
+          data-color={f.color}
+          aria-selected={f.key === "all" ? "true" : "false"}
+        >
+          {f.key !== "all" && (
+            <span class="w-2.5 h-2.5 rounded-full" style={`background: ${f.color}`}></span>
+          )}
+          {f.label}
+        </button>
+      ))}
+    </div>
 
     <!-- Vertical timeline -->
     <div class="relative">
-      <!-- Gradient line -->
       <div class="absolute left-4 sm:left-6 top-0 bottom-0 w-0.5 timeline-line-gradient rounded-full"></div>
 
-      <div class="space-y-8">
+      <div class="space-y-8" id="journey-list">
         {siteConfig.journey.map((item, i) => (
-          <div class={`reveal stagger-${Math.min(i % 5 + 1, 5)} relative pl-12 sm:pl-16`}>
-            <!-- Dot -->
+          <div
+            class={`journey-item reveal stagger-${Math.min(i % 5 + 1, 5)} relative pl-12 sm:pl-16`}
+            data-type={item.type}
+          >
             <div
               class="absolute left-[11px] sm:left-[19px] top-1.5 w-3 h-3 rounded-full border-2"
               style={`border-color: ${item.type === 'work' ? 'var(--magentra)' : 'var(--aqva)'}; background: ${item.type === 'work' ? 'var(--magentra)' : 'var(--aqva)'};`}
@@ -38,17 +64,62 @@ import { siteConfig } from "../config";
         ))}
       </div>
     </div>
-
-    <!-- Legend -->
-    <div class="reveal mt-10 flex items-center justify-center gap-6 text-xs text-[var(--text-secondary)]">
-      <div class="flex items-center gap-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-[var(--magentra)]"></span>
-        Experiencia
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-[var(--aqva)]"></span>
-        Formación
-      </div>
-    </div>
   </div>
 </section>
+
+<style>
+  .journey-chip {
+    border-color: color-mix(in srgb, var(--coco-silver) 28%, transparent);
+    color: var(--text-secondary);
+    background: transparent;
+    cursor: pointer;
+  }
+  .journey-chip:hover {
+    border-color: color-mix(in srgb, var(--magentra) 50%, transparent);
+    color: var(--text-primary);
+  }
+  .journey-chip[aria-selected="true"] {
+    background: var(--magentra);
+    border-color: var(--magentra);
+    color: #fff;
+    font-weight: 600;
+  }
+  /* el dot de color se vuelve blanco sobre el fondo magenta activo */
+  .journey-chip[aria-selected="true"] span {
+    background: #fff !important;
+  }
+
+  /* Transición fluida: el item colapsa en altura además de desvanecerse,
+     así la línea de tiempo se reacomoda sin salto brusco. */
+  .journey-item {
+    overflow: hidden;
+    transition: opacity 0.28s ease, transform 0.28s ease, max-height 0.35s ease, margin 0.28s ease;
+    max-height: 300px;
+    opacity: 1;
+  }
+  .journey-item.is-out {
+    opacity: 0;
+    transform: translateY(-6px);
+    max-height: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>(".journey-chip");
+  const items = document.querySelectorAll<HTMLElement>(".journey-item");
+
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const filter = chip.dataset.filter;
+      chips.forEach((c) => c.setAttribute("aria-selected", String(c === chip)));
+
+      items.forEach((item) => {
+        const match = filter === "all" || item.dataset.type === filter;
+        item.classList.toggle("is-out", !match);
+      });
+    });
+  });
+</script>

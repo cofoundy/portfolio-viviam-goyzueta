@@ -1,0 +1,85 @@
+---
+// Fila de CTAs sociales de una tarjeta de Laboratorios.
+// Un link null todavía no está confirmado por la clienta: el ícono se
+// renderiza inerte (opaco, sin href) en vez de apuntar a una URL inventada.
+interface Props {
+  social: { instagram: string | null; linkedin: string | null; tiktok: string | null };
+  name: string;
+}
+const { social, name } = Astro.props;
+---
+
+<div class="flex items-center gap-3 mt-6 pt-5 border-t border-[var(--infigo)]/20">
+  <!-- Instagram -->
+  {social.instagram ? (
+    <a href={social.instagram} target="_blank" rel="noopener noreferrer" aria-label={`Instagram de ${name}`} class="social-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-4 h-4">
+        <rect x="2" y="2" width="20" height="20" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none" />
+      </svg>
+    </a>
+  ) : (
+    <span class="social-icon is-pending" title="Instagram — link pendiente" aria-label={`Instagram de ${name} (pendiente)`}>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-4 h-4">
+        <rect x="2" y="2" width="20" height="20" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none" />
+      </svg>
+    </span>
+  )}
+
+  <!-- LinkedIn -->
+  {social.linkedin ? (
+    <a href={social.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn de ${name}`} class="social-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2.01 0-2.32 1.57-2.32 3.2V21h-4V9Z" />
+      </svg>
+    </a>
+  ) : (
+    <span class="social-icon is-pending" title="LinkedIn — link pendiente" aria-label={`LinkedIn de ${name} (pendiente)`}>
+      <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.6 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2.01 0-2.32 1.57-2.32 3.2V21h-4V9Z" />
+      </svg>
+    </span>
+  )}
+
+  <!-- TikTok -->
+  {social.tiktok ? (
+    <a href={social.tiktok} target="_blank" rel="noopener noreferrer" aria-label={`TikTok de ${name}`} class="social-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+        <path d="M16.5 2h-3v13.2a2.7 2.7 0 1 1-2.1-2.63V9.4a5.9 5.9 0 1 0 5.1 5.84V8.9a6.9 6.9 0 0 0 4 1.28V7.1a3.9 3.9 0 0 1-4-3.9V2Z" />
+      </svg>
+    </a>
+  ) : (
+    <span class="social-icon is-pending" title="TikTok — link pendiente" aria-label={`TikTok de ${name} (pendiente)`}>
+      <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+        <path d="M16.5 2h-3v13.2a2.7 2.7 0 1 1-2.1-2.63V9.4a5.9 5.9 0 1 0 5.1 5.84V8.9a6.9 6.9 0 0 0 4 1.28V7.1a3.9 3.9 0 0 1-4-3.9V2Z" />
+      </svg>
+    </span>
+  )}
+</div>
+
+<style>
+  .social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--infigo) 35%, transparent);
+    color: var(--coco-silver);
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+  a.social-icon:hover {
+    color: #fff;
+    background: var(--magentra);
+    border-color: var(--magentra);
+    transform: translateY(-2px);
+  }
+  .social-icon.is-pending {
+    opacity: 0.3;
+    cursor: default;
+  }
+</style>

@@ -1,7 +1,17 @@
 ---
 import { siteConfig } from "../config";
 const categories = Object.entries(siteConfig.toolkit);
-const categoryColors = ["var(--magentra)", "var(--aqva)", "var(--solara)", "var(--umbral)", "var(--infigo)"];
+// Color por NOMBRE de categoría (no por índice): "Media & Visual" comparte el
+// magenta de "Diseño/UX" a pedido de la clienta.
+const categoryColors: Record<string, string> = {
+  "Diseño/UX": "var(--magentra)",
+  "Media & Visual": "var(--magentra)",
+  "Desarrollo": "var(--aqva)",
+  "Tech/Ops": "var(--solara)",
+  "Seguridad": "var(--umbral)",
+  "Estrategia": "var(--infigo)",
+};
+const fallbackColor = "var(--magentra)";
 ---
 
 <section class="py-20 sm:py-28 px-6 bg-[var(--bg-light)]">
@@ -16,7 +26,7 @@ const categoryColors = ["var(--magentra)", "var(--aqva)", "var(--solara)", "var(
     <div class="space-y-8">
       {categories.map(([category, skills], i) => (
         <div class={`reveal stagger-${Math.min(i + 1, 5)}`}>
-          <h3 class="text-sm font-mono font-bold tracking-wider mb-3" style={`color: ${categoryColors[i]}`}>
+          <h3 class="text-sm font-mono font-bold tracking-wider mb-3" style={`color: ${categoryColors[category] ?? fallbackColor}`}>
             {category}
           </h3>
           <div class="flex flex-wrap gap-2">
